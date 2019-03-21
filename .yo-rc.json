@@ -1,0 +1,15 @@
+{
+  "generator-ndx": {
+    "filters": {
+      "settings": {
+        "appType": "electron",
+        "undefined": true,
+        "description": "ndx-framework web app",
+        "appName": "educator",
+        "gitname": "",
+        "gitemail": ""
+      }
+    },
+    "appname": "github"
+  }
+}

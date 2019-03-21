@@ -1,7 +1,7 @@
 {
   "name": "educator",
   "version": "0.0.1",
-  "description": "ndx-framework web app",
+  "description": "education thing",
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
@@ -9,16 +9,16 @@
     "pack-mac": "build --mac -p always"
   },
   "build": {
-    "appId": "com..educator",
+    "appId": "com.ndxbxrme.educator",
     "productName": "educator"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com//educator"
+    "url": "https://github.com/ndxbxrme/educator"
   },
-  "author": "",
+  "author": "ndxbxrme",
   "license": "MIT",
-  "homepage": "https://github.com//educator",
+  "homepage": "https://github.com/ndxbxrme/educator",
   "devDependencies": {
     "electron": "^4.1.1",
     "electron-builder": "^20.39.0",

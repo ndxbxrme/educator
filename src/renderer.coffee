@@ -21,7 +21,7 @@ ipcRenderer.on 'render', (app, data) ->
       text: example.text
       intent: example.intent
       intents: data.mergedIntents
-      newIntent: data.newIntent
+      newIntent: example.newIntent
       renderOptions: renderOptions
   $container.innerHTML = html
 updateStatus = (data) ->

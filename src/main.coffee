@@ -15,6 +15,10 @@ data =
   jsonIntents: []
   mergedIntents: []
 
+textExists = (text, examples) ->
+  for example in examples
+    return true if text is example.text
+  false
 processData = ->
   data.merged = JSON.parse JSON.stringify data.json
   examples = data.merged.rasa_nlu_data.common_examples
@@ -25,11 +29,11 @@ processData = ->
     data.jsonIntents.push example.intent if data.jsonIntents.indexOf(example.intent) is -1
   data.mergedIntents = JSON.parse JSON.stringify data.jsonIntents
   for row, i in data.csv
-    continue if not i
+    continue if not i or textExists row[2], examples
     examples.push
       text: row[2]
       intent: row[1]
-      newIntent: data.jsonIntents.indexOf(row[1]) is -1
+      newIntent: true
     if data.mergedIntents.indexOf(row[1]) is -1
       data.csvIntents.push row[1]
       data.mergedIntents.push row[1]

@@ -1,6 +1,6 @@
 {
   "name": "educator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "education thing",
   "main": "app/main.js",
   "scripts": {

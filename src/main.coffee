@@ -28,15 +28,16 @@ processData = ->
   for example in examples
     data.jsonIntents.push example.intent if data.jsonIntents.indexOf(example.intent) is -1
   data.mergedIntents = JSON.parse JSON.stringify data.jsonIntents
-  for row, i in data.csv
-    continue if not i or textExists row[2], examples
-    examples.push
-      text: row[2]
-      intent: row[1]
-      newIntent: true
-    if data.mergedIntents.indexOf(row[1]) is -1
-      data.csvIntents.push row[1]
-      data.mergedIntents.push row[1]
+  if data.csv and data.csv.length
+    for row, i in data.csv
+      continue if not i or textExists row[2], examples
+      examples.push
+        text: row[2]
+        intent: row[1]
+        newIntent: true
+      if data.mergedIntents.indexOf(row[1]) is -1
+        data.csvIntents.push row[1]
+        data.mergedIntents.push row[1]
   mainWindow.webContents.send 'render', data
   
 parseCsv = (csv) ->
@@ -58,7 +59,7 @@ openCsv = ->
       extensions: ['csv']
     ]
   data.csv = await parseCsv await fs.readFile results[0], 'utf8' if results.length
-  if data.csv and data.json
+  if true#data.csv and data.json
     processData()
   else
     mainWindow.webContents.send 'updateStatus', data
@@ -72,7 +73,7 @@ openJson = ->
   text = await fs.readFile results[0], 'utf8' if results.length
   text = text.substr text.indexOf('{')
   data.json = JSON.parse text
-  if data.csv and data.json
+  if true#data.csv and data.json
     processData()
   else
     mainWindow.webContents.send 'updateStatus', data
@@ -123,6 +124,7 @@ ready = ->
     pathname: path.join __dirname, 'index.html'
     protocol: 'file:'
     slashes: true
+  #mainWindow.openDevTools()
 app.on 'ready', ready
 app.on 'window-all-closed', ->
   process.platform is 'darwin' or app.quit()

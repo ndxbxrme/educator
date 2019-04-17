@@ -26,7 +26,7 @@ ipcRenderer.on 'render', (app, data) ->
   $container.innerHTML = html
 updateStatus = (data) ->
   $container.innerHTML = '<h1>Awaiting files</h1>'
-  $container.innerHTML += '<h3>CSV</h3>' if not data.csv
+  #$container.innerHTML += '<h3>CSV</h3>' if not data.csv
   $container.innerHTML += '<h3>JSON</h3>' if not data.json
   $container.innerHTML += '<p>Select files using the main menu</p>'
 updateStatus {}
